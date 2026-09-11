@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Políticas de Privacidad — Kikomerce</title>
+<meta name="description" content="Política de tratamiento y protección de datos personales de Kikomerce: Habeas Data, finalidades del tratamiento y derechos del titular.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ivory: #FBF8F3;
+    --ivory-deep: #F3EEE3;
+    --ink: #2B2420;
+    --ink-soft: #5C5347;
+    --amber: #B4720F;
+    --amber-deep: #8F5A0C;
+    --teal: #21504A;
+    --teal-dark: #163934;
+    --line: #E3D9C8;
+    --white: #FFFFFF;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--ivory);
+    color: var(--ink);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  button { font-family: inherit; cursor: pointer; }
+
+  .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 3px;
+  }
+
+  /* ============ HEADER / NAV (igual al home) ============ */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--ivory);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .header-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 18px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--teal-dark);
+  }
+
+  .main-nav > ul {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .main-nav a,
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    font-size: 0.98rem;
+    font-weight: 500;
+    color: var(--ink);
+    background: none;
+    border: none;
+    border-radius: 3px;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .main-nav a:hover,
+  .nav-toggle:hover,
+  .nav-toggle[aria-expanded="true"] {
+    background: var(--ivory-deep);
+    color: var(--teal-dark);
+  }
+
+  .nav-toggle svg {
+    width: 12px;
+    height: 12px;
+    transition: transform 0.15s ease;
+  }
+
+  .nav-toggle[aria-expanded="true"] svg {
+    transform: rotate(180deg);
+  }
+
+  .has-submenu { position: relative; }
+
+  .submenu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    box-shadow: 0 16px 40px rgba(43, 36, 32, 0.12);
+    padding: 26px;
+    display: none;
+    grid-template-columns: repeat(3, minmax(160px, 1fr));
+    gap: 28px;
+    min-width: 620px;
+  }
+
+  .has-submenu.open .submenu { display: grid; }
+
+  .submenu-col h4 {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    margin: 0 0 12px;
+  }
+
+  .submenu-col a {
+    display: block;
+    padding: 6px 0;
+    font-size: 0.94rem;
+    color: var(--ink-soft);
+  }
+  .submenu-col a:hover { color: var(--teal-dark); }
+
+  .mobile-toggle { display: none; background: none; border: none; padding: 8px; }
+  .mobile-toggle svg { width: 24px; height: 24px; color: var(--ink); }
+
+  @media (max-width: 900px) {
+    .main-nav { display: none; }
+    .mobile-toggle { display: block; }
+
+    .main-nav.mobile-open {
+      display: block;
+      position: fixed;
+      inset: 0;
+      background: var(--ivory);
+      z-index: 60;
+      padding: 22px 28px;
+      overflow-y: auto;
+    }
+
+    .main-nav.mobile-open > ul {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 2px;
+    }
+
+    .submenu {
+      position: static;
+      transform: none;
+      display: none;
+      grid-template-columns: 1fr;
+      min-width: 0;
+      box-shadow: none;
+      border: none;
+      padding: 10px 0 10px 16px;
+    }
+    .has-submenu.open .submenu { display: grid; }
+  }
+
+  .close-mobile-nav { display: none; }
+  @media (max-width: 900px) {
+    .close-mobile-nav { display: flex; justify-content: flex-end; margin-bottom: 12px; }
+    .close-mobile-nav button { background: none; border: none; padding: 8px; }
+    .close-mobile-nav svg { width: 22px; height: 22px; }
+  }
+
+  /* ============ CONTENIDO DE POLÍTICA ============ */
+  .policy-hero {
+    padding: 56px 0 30px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .policy-hero .eyebrow {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--amber-deep);
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .policy-hero h1 {
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    max-width: 20ch;
+    margin-bottom: 10px;
+  }
+
+  .policy-meta {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
+
+  .policy-body {
+    padding: 48px 0 80px;
+  }
+
+  .policy-content {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .policy-content h2 {
+    font-size: 1.3rem;
+    margin: 44px 0 14px;
+  }
+  .policy-content h2:first-child { margin-top: 0; }
+
+  .policy-content p {
+    margin: 0 0 14px;
+    color: var(--ink-soft);
+    font-size: 1rem;
+  }
+
+  .policy-content ul {
+    margin: 0 0 14px;
+    padding-left: 0;
+  }
+
+  .policy-content ul li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 12px;
+    color: var(--ink-soft);
+  }
+
+  .policy-content ul li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--amber-deep);
+  }
+
+  .policy-content strong { color: var(--ink); font-weight: 600; }
+
+  .policy-contact-box {
+    margin-top: 40px;
+    padding: 24px 26px;
+    background: var(--ivory-deep);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+  }
+
+  .policy-contact-box p { margin: 0 0 6px; font-size: 0.95rem; }
+  .policy-contact-box p:last-child { margin-bottom: 0; }
+  .policy-contact-box a { color: var(--teal-dark); font-weight: 500; }
+
+  /* ============ FOOTER (igual al home) ============ */
+  .site-footer { background: #000000; color: #F2F2F2; padding: 70px 0 0; }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr 1fr 1.3fr;
+    gap: 40px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid rgba(255,255,255,0.14);
+  }
+
+  .footer-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .footer-col h3 {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 18px;
+  }
+
+  .footer-col ul li { margin-bottom: 11px; }
+  .footer-col ul a { font-size: 0.92rem; color: #BFBFBF; }
+  .footer-col ul a:hover { color: var(--white); }
+
+  .subscribe-col p {
+    font-size: 0.92rem;
+    color: #BFBFBF;
+    margin: 0 0 20px;
+    max-width: 32ch;
+  }
+
+  .subscribe-form {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+    padding-bottom: 10px;
+  }
+  .subscribe-form input {
+    flex: 1; background: none; border: none; color: var(--white);
+    font-size: 0.92rem; font-family: 'Work Sans', sans-serif; padding: 4px 0;
+  }
+  .subscribe-form input::placeholder { color: #8A8A8A; }
+  .subscribe-form input:focus { outline: none; }
+  .subscribe-form button { background: none; border: none; color: var(--white); padding: 4px 0 4px 10px; display: flex; align-items: center; }
+  .subscribe-form button svg { width: 18px; height: 18px; }
+
+  .footer-bottom { padding: 26px 0 34px; }
+  .footer-bottom p { margin: 0; text-align: center; font-size: 0.85rem; color: #A6A6A6; max-width: 70ch; margin: 0 auto; }
+  .footer-bottom a { color: #D8D8D8; }
+  .footer-bottom a:hover { color: var(--white); }
+
+  @media (max-width: 900px) { .footer-top { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .footer-top { grid-template-columns: 1fr; } }
+
+  /* ============ SOCIAL BUBBLE (igual al home) ============ */
+  .social-bubble {
+    position: fixed; right: 24px; bottom: 24px; z-index: 70;
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+  }
+  .social-bubble .bubble-links {
+    display: flex; flex-direction: column; gap: 10px; margin-bottom: 4px;
+    opacity: 0; visibility: hidden; transform: translateY(10px);
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  }
+  .social-bubble.open .bubble-links { opacity: 1; visibility: visible; transform: translateY(0); }
+  .social-bubble a, .bubble-toggle {
+    width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    background: var(--teal); color: var(--white); box-shadow: 0 10px 24px rgba(22, 57, 52, 0.35); border: none;
+  }
+  .social-bubble a svg, .bubble-toggle svg { width: 22px; height: 22px; }
+  .bubble-toggle { background: var(--ink); transition: transform 0.18s ease; }
+  .social-bubble.open .bubble-toggle { transform: rotate(45deg); }
+</style>
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="/">Kikomerce</a>
+
+      <nav class="main-nav" id="mainNav">
+        <div class="close-mobile-nav">
+          <button id="closeMobileNav" aria-label="Cerrar menú">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <ul>
+          <li><a href="/">Inicio</a></li>
+          <li class="has-submenu" id="productosItem">
+            <button class="nav-toggle" aria-expanded="false">
+              Productos
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="submenu">
+              <div class="submenu-col">
+                <h4>Para la cocina</h4>
+                <a href="/#productos">Organizadores de cocina</a>
+                <a href="/#productos">Utensilios y menaje</a>
+                <a href="/#productos">Almacenamiento de alimentos</a>
+              </div>
+              <div class="submenu-col">
+                <h4>Para el hogar</h4>
+                <a href="/#productos">Decoración</a>
+                <a href="/#productos">Iluminación</a>
+                <a href="/#productos">Baño y aseo</a>
+              </div>
+              <div class="submenu-col">
+                <h4>Explora más</h4>
+                <a href="/#productos">Organización y closets</a>
+                <a href="/#productos">Jardín y exterior</a>
+                <a href="/#productos">Ofertas de la semana</a>
+              </div>
+            </div>
+          </li>
+          <li><a href="/#sobre-nosotros">Sobre Nosotros</a></li>
+          <li><a href="/#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <button class="mobile-toggle" id="openMobileNav" aria-label="Abrir menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ CONTENIDO ============ -->
+  <section class="policy-hero">
+    <div class="wrap">
+      <span class="eyebrow">Legal</span>
+      <h1>Política de Tratamiento de Datos Personales</h1>
+      <p class="policy-meta">Última actualización: 11 de septiembre de 2026 · Kikomerce · Habeas Data (Ley 1581 de 2012)</p>
+    </div>
+  </section>
+
+  <section class="policy-body">
+    <div class="wrap">
+      <div class="policy-content">
+
+        <h2>1. Identificación del responsable del tratamiento</h2>
+        <p><strong>Kikomerce</strong> (en adelante, "la Empresa"), actuando en calidad de Responsable del Tratamiento de Datos Personales, adopta la presente Política en estricto cumplimiento de la Ley Estatutaria 1581 de 2012, el Decreto Reglamentario 1377 de 2013 y demás normas que modifiquen, adicionen o complementen el régimen de Habeas Data en Colombia.</p>
+        <p>Para efectos de ejercer cualquier derecho de consulta, rectificación, actualización o eliminación de datos, el canal directo y exclusivo es el correo electrónico: <a href="mailto:contacto@kikomerce.co">contacto@kikomerce.co</a>.</p>
+
+        <h2>2. Datos personales recopilados</h2>
+        <p>Kikomerce recopila información de los usuarios a través de formularios web, interacciones comerciales automatizadas o conversaciones directas en WhatsApp:</p>
+        <ul>
+          <li><strong>Datos de contacto e identificación:</strong> nombres y apellidos, número de identificación de ser requerido, número de telefonía móvil / WhatsApp y dirección de correo electrónico.</li>
+          <li><strong>Datos logísticos de despacho:</strong> dirección física de entrega, nomenclatura, barrio, ciudad, departamento y referencias de entrega.</li>
+          <li><strong>Datos técnicos y de navegación:</strong> dirección IP, identificadores de cookies, metadatos de sesión, navegador y eventos del sitio web recolectados con fines de optimización técnica y rendimiento de conversión.</li>
+          <li><strong>Datos transaccionales:</strong> historial de pedidos realizados, estado de despacho de las guías y métodos de adquisición elegidos (como pago contra entrega).</li>
+        </ul>
+        <p><strong>Nota técnica sobre pagos:</strong> Kikomerce no almacena ni procesa directamente números de tarjetas de crédito o credenciales bancarias sensibles. Las compras contra entrega son liquidadas en efectivo o mediante los datáfonos provistos por las transportadoras nacionales al momento del desembarque del paquete.</p>
+
+        <h2>3. Finalidad del tratamiento de los datos</h2>
+        <p>Los datos personales recolectados serán tratados para las siguientes finalidades legítimas:</p>
+        <ul>
+          <li><strong>Gestión y validación de pedidos:</strong> procesar la orden de compra generada en el sitio web y autenticar los datos del destinatario a través de mensajes de confirmación automáticos o asistidos por WhatsApp.</li>
+          <li><strong>Ejecución logística con terceros (Dropi y transportadoras):</strong> transmitir los datos estrictamente necesarios a la plataforma logística Dropi y a las empresas de transporte asociadas (Inter Rapidísimo, Servientrega, Coordinadora, Envía, entre otras) para la generación de la guía aérea o terrestre y el reparto físico del paquete.</li>
+          <li><strong>Atención postventa y garantías:</strong> brindar soporte al cliente en seguimiento de envíos, resolución de novedades en reparto, trámites de cambios, devoluciones y radicación de PQRS.</li>
+          <li><strong>Comunicaciones comerciales:</strong> enviar actualizaciones sobre el estado de la compra o información sobre productos y ofertas, siempre que el usuario haya otorgado su consentimiento y conservando la opción de revocar la suscripción en cualquier momento.</li>
+          <li><strong>Seguridad y prevención de fraude:</strong> validar la veracidad de direcciones y números telefónicos para prevenir órdenes falsas o pedidos fantasma en la modalidad de pago contra entrega.</li>
+        </ul>
+
+        <h2>4. Transmisión y transferencia de datos a terceros</h2>
+        <p>Kikomerce no comercializa, vende, renta ni cede las bases de datos personales a terceros con fines mercantiles ajenos. La transmisión de datos se limita exclusivamente a encargados del tratamiento que intervienen en la cadena de valor del servicio:</p>
+        <ul>
+          <li><strong>Plataformas de logística y distribución:</strong> integración directa mediante API con Dropi y sistemas de transportadoras aliadas para la materialización del despacho.</li>
+          <li><strong>Infraestructura en la nube y mensajería:</strong> servidores de alojamiento web, bases de datos y proveedores de soluciones de mensajería (incluyendo las herramientas tecnológicas de Meta Platforms, Inc. como WhatsApp Cloud API) para la comunicación operativa con el usuario.</li>
+          <li><strong>Autoridades competentes:</strong> cuando medie requerimiento judicial o legal emanado por autoridades administrativas o judiciales de la República de Colombia.</li>
+        </ul>
+
+        <h2>5. Derechos de los titulares de la información (Habeas Data)</h2>
+        <p>De conformidad con el Artículo 8 de la Ley 1581 de 2012, el titular de los datos personales cuenta con los siguientes derechos:</p>
+        <ul>
+          <li>Conocer, actualizar y rectificar sus datos personales frente a Kikomerce en su condición de Responsable del Tratamiento.</li>
+          <li>Solicitar prueba de la autorización otorgada para el tratamiento de su información.</li>
+          <li>Ser informado del uso que se le ha dado a sus datos personales previa solicitud.</li>
+          <li>Presentar quejas ante la Superintendencia de Industria y Comercio (SIC) por infracciones a la normatividad vigente sobre tratamiento de datos.</li>
+          <li>Revocar la autorización y/o solicitar la supresión del dato cuando en el tratamiento no se respeten los principios, derechos y garantías constitucionales y legales.</li>
+        </ul>
+
+        <h2>6. Procedimiento para el ejercicio de derechos (consultas y reclamos)</h2>
+        <p>Cualquier titular o causahabiente podrá ejercer sus derechos de consulta o reclamo siguiendo este procedimiento:</p>
+        <ul>
+          <li><strong>Canal oficial:</strong> enviar una comunicación formal vía correo electrónico a: contacto@kikomerce.co.</li>
+          <li><strong>Contenido de la solicitud:</strong> nombre completo e identificación del titular; descripción clara y precisa de los hechos que dan lugar a la consulta o reclamo (actualización, corrección o supresión); dirección de correo electrónico para remitir la respuesta; documentos o capturas que soporten la solicitud (si aplica).</li>
+          <li><strong>Tiempos de respuesta — consultas:</strong> serán atendidas en un término máximo de diez (10) días hábiles contados a partir de la fecha de recibo.</li>
+          <li><strong>Tiempos de respuesta — reclamos:</strong> serán atendidos en un término máximo de quince (15) días hábiles contados a partir del día siguiente a la recepción formal.</li>
+        </ul>
+
+        <h2>7. Uso de cookies y tecnologías de rastreo</h2>
+        <p>El sitio web kikomerce.co puede emplear cookies técnicas y analíticas (como etiquetas de analítica web y píxeles de seguimiento publicitario) para monitorear el comportamiento de navegación, optimizar los tiempos de carga y personalizar la experiencia del usuario. El usuario tiene la potestad de configurar su navegador para bloquear o eliminar las cookies en cualquier momento desde los ajustes de privacidad de su explorador.</p>
+
+        <h2>8. Medidas de seguridad de la información</h2>
+        <p>Kikomerce implementa medidas técnicas, humanas y administrativas necesarias para brindar seguridad a los registros, evitando su adulteración, pérdida, consulta o acceso no autorizado. Las comunicaciones entre el cliente y el sitio web viajan cifradas a través de certificados de seguridad SSL/TLS (protocolo HTTPS) bajo estándares de la industria informática.</p>
+
+        <h2>9. Vigencia y modificaciones</h2>
+        <p>La presente Política entra en vigencia a partir de su publicación en el sitio web. Las bases de datos se mantendrán activas mientras subsista la relación comercial con el cliente o durante el tiempo exigido por las normas contables, fiscales y tributarias aplicables en Colombia. Kikomerce se reserva el derecho de modificar esta política en cualquier momento, informando oportunamente cualquier cambio sustancial en este mismo enlace.</p>
+
+        <div class="policy-contact-box">
+          <p><strong>Correo electrónico de Habeas Data:</strong> <a href="mailto:contacto@kikomerce.co">contacto@kikomerce.co</a></p>
+          <p><strong>Domicilio operativo:</strong> República de Colombia</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer" id="contacto">
+    <div class="wrap footer-top">
+      <div class="footer-col logo-col">
+        <span class="footer-logo">Kikomerce</span>
+      </div>
+
+      <div class="footer-col">
+        <h3>Servicio al cliente</h3>
+        <ul>
+          <li><a href="/pages/terminos-del-servicio.html">Términos del servicio</a></li>
+          <li><a href="/pages/politicas-de-privacidad.html">Políticas de privacidad</a></li>
+          <li><a href="/pages/politicas-de-envios.html">Políticas de envíos</a></li>
+          <li><a href="/pages/politicas-de-reembolso.html">Políticas de reembolso</a></li>
+          <li><a href="/pages/politicas-de-promociones.html">Políticas de promociones</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Acerca de Kikomerce®</h3>
+        <ul>
+          <li><a href="/search">Buscar</a></li>
+          <li><a href="/pages/quienes-somos.html">¿Quiénes somos?</a></li>
+          <li><a href="/pages/preguntas-frecuentes.html">Preguntas frecuentes</a></li>
+          <li><a href="/#contacto">Contáctanos</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col subscribe-col">
+        <h3>Suscríbete para conocer más</h3>
+        <p>Obtén ofertas únicas en la vida, entérate de nuevos lanzamientos y conoce nuevas tendencias de productos para el hogar.</p>
+        <form class="subscribe-form" onsubmit="return false;">
+          <input type="email" placeholder="Suscríbete a nuestra lista de correo" required>
+          <button type="submit" aria-label="Suscribir">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18v12H3zM3 6l9 7 9-7"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="wrap footer-bottom">
+      <p>© 2026 Yony Duvan Roa® Todos los derechos reservados. ¡Escríbenos! a <a href="mailto:contacto@kikomerce.co">contacto@kikomerce.co</a> o a nuestro WhatsApp <a href="https://wa.me/573212795272" target="_blank" rel="noopener">+57 321 2795272</a>.</p>
+    </div>
+  </footer>
+
+  <!-- ============ SOCIAL BUBBLE ============ -->
+  <div class="social-bubble" id="socialBubble">
+    <div class="bubble-links">
+      <a href="#" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.2-1.5 1.6-1.5H16.7V3.7C16.4 3.7 15.4 3.6 14.3 3.6c-2.3 0-3.9 1.4-3.9 4V10H7.7v3.1h2.7V21h3.1Z"/></svg>
+      </a>
+      <a href="#" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="0.8" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="#" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.5 3h2.6c.2 1.6 1.3 2.9 2.9 3.2v2.6c-1.1 0-2.1-.3-3-.9v6.4a5.3 5.3 0 1 1-5.3-5.3c.3 0 .5 0 .8.1v2.7a2.6 2.6 0 1 0 1.8 2.5V3Z"/></svg>
+      </a>
+    </div>
+    <button class="bubble-toggle" id="bubbleToggle" aria-label="Redes sociales">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+    </button>
+  </div>
+
+  <script>
+    // ---- Productos dropdown ----
+    (function () {
+      const item = document.getElementById('productosItem');
+      const toggle = item.querySelector('.nav-toggle');
+      toggle.addEventListener('click', () => {
+        const isOpen = item.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', isOpen);
+      });
+      document.addEventListener('click', (e) => {
+        if (!item.contains(e.target)) {
+          item.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          item.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+
+    // ---- Mobile nav ----
+    (function () {
+      const nav = document.getElementById('mainNav');
+      document.getElementById('openMobileNav').addEventListener('click', () => nav.classList.add('mobile-open'));
+      document.getElementById('closeMobileNav').addEventListener('click', () => nav.classList.remove('mobile-open'));
+    })();
+
+    // ---- Social bubble ----
+    (function () {
+      const bubble = document.getElementById('socialBubble');
+      document.getElementById('bubbleToggle').addEventListener('click', () => bubble.classList.toggle('open'));
+      document.addEventListener('click', (e) => { if (!bubble.contains(e.target)) bubble.classList.remove('open'); });
+    })();
+  </script>
+
+</body>
+</html>
