@@ -4,23 +4,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kikomerce — Tu tienda de confianza para el hogar</title>
-<meta name="description" content="Kikomerce, tienda online de artículos para el hogar en Colombia.">
+<meta name="description" content="Kikomerce, tienda online de artículos para el hogar en Colombia. Cocina, decoración, organización y más.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --ivory: #FBF8F3;
+    --ivory-deep: #F3EEE3;
     --ink: #2B2420;
     --ink-soft: #5C5347;
     --amber: #B4720F;
+    --amber-deep: #8F5A0C;
     --teal: #21504A;
     --teal-dark: #163934;
     --line: #E3D9C8;
+    --white: #FFFFFF;
   }
 
   * { box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -32,167 +34,993 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  a { color: inherit; }
+  a { color: inherit; text-decoration: none; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  button { font-family: inherit; cursor: pointer; }
+  img { max-width: 100%; display: block; }
 
   .wrap {
-    max-width: 780px;
+    max-width: 1180px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 28px;
   }
 
-  header {
-    padding: 40px 0 0;
-  }
-
-  .mark {
+  h1, h2, h3 {
     font-family: 'Fraunces', serif;
-    font-size: 1.3rem;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: -0.01em;
-    color: var(--teal-dark);
-    text-decoration: none;
-  }
-
-  main {
-    padding: 90px 0 70px;
-  }
-
-  h1 {
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
-    font-size: clamp(2.4rem, 6vw, 3.6rem);
-    line-height: 1.08;
-    letter-spacing: -0.015em;
-    margin: 0 0 28px;
-    max-width: 11ch;
-  }
-
-  h1 span {
-    color: var(--amber);
-    font-style: italic;
-  }
-
-  .slogan {
-    font-size: 1.15rem;
-    color: var(--ink-soft);
-    max-width: 56ch;
-    margin: 0 0 44px;
-  }
-
-  .legal {
-    font-size: 0.92rem;
-    color: var(--ink-soft);
-  }
-
-  .contact {
-    margin-top: 56px;
-    padding-top: 40px;
-    border-top: 1px solid var(--line);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 28px;
-    align-items: center;
-  }
-
-  .contact-item {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  .contact-label {
-    font-size: 0.8rem;
-    color: var(--ink-soft);
-  }
-
-  .contact-value {
-    font-size: 1.02rem;
-    font-weight: 500;
-  }
-
-  .whatsapp-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: var(--teal);
-    color: var(--ivory);
-    text-decoration: none;
-    padding: 14px 26px;
-    border-radius: 3px;
-    font-weight: 500;
-    font-size: 1rem;
-    transition: background 0.15s ease;
-  }
-
-  .whatsapp-btn:hover {
-    background: var(--teal-dark);
-  }
-
-  footer {
-    border-top: 1px solid var(--line);
-    padding: 28px 0 44px;
-  }
-
-  footer p {
     margin: 0;
-    font-size: 0.85rem;
-    color: var(--ink-soft);
-  }
-
-  @media (max-width: 560px) {
-    main { padding: 60px 0 50px; }
-    .contact { flex-direction: column; align-items: flex-start; }
   }
 
   :focus-visible {
     outline: 2px solid var(--teal);
     outline-offset: 3px;
   }
+
+  /* ============ HEADER / NAV ============ */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--ivory);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .header-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 18px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--teal-dark);
+  }
+
+  .main-nav > ul {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .main-nav a,
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    font-size: 0.98rem;
+    font-weight: 500;
+    color: var(--ink);
+    background: none;
+    border: none;
+    border-radius: 3px;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .main-nav a:hover,
+  .nav-toggle:hover,
+  .nav-toggle[aria-expanded="true"] {
+    background: var(--ivory-deep);
+    color: var(--teal-dark);
+  }
+
+  .nav-toggle svg {
+    width: 12px;
+    height: 12px;
+    transition: transform 0.15s ease;
+  }
+
+  .nav-toggle[aria-expanded="true"] svg {
+    transform: rotate(180deg);
+  }
+
+  .has-submenu {
+    position: relative;
+  }
+
+  .submenu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    box-shadow: 0 16px 40px rgba(43, 36, 32, 0.12);
+    padding: 26px;
+    display: none;
+    grid-template-columns: repeat(3, minmax(160px, 1fr));
+    gap: 28px;
+    min-width: 620px;
+  }
+
+  .has-submenu.open .submenu {
+    display: grid;
+  }
+
+  .submenu-col h4 {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    margin: 0 0 12px;
+  }
+
+  .submenu-col a {
+    display: block;
+    padding: 6px 0;
+    font-size: 0.94rem;
+    color: var(--ink-soft);
+  }
+
+  .submenu-col a:hover {
+    color: var(--teal-dark);
+  }
+
+  .mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    padding: 8px;
+  }
+
+  .mobile-toggle svg { width: 24px; height: 24px; color: var(--ink); }
+
+  @media (max-width: 900px) {
+    .main-nav { display: none; }
+    .mobile-toggle { display: block; }
+
+    .main-nav.mobile-open {
+      display: block;
+      position: fixed;
+      inset: 0;
+      background: var(--ivory);
+      z-index: 60;
+      padding: 22px 28px;
+      overflow-y: auto;
+    }
+
+    .main-nav.mobile-open > ul {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 2px;
+    }
+
+    .submenu {
+      position: static;
+      transform: none;
+      display: none;
+      grid-template-columns: 1fr;
+      min-width: 0;
+      box-shadow: none;
+      border: none;
+      padding: 10px 0 10px 16px;
+    }
+
+    .has-submenu.open .submenu { display: grid; }
+  }
+
+  .close-mobile-nav {
+    display: none;
+  }
+
+  @media (max-width: 900px) {
+    .close-mobile-nav {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 12px;
+    }
+    .close-mobile-nav button { background: none; border: none; padding: 8px; }
+    .close-mobile-nav svg { width: 22px; height: 22px; }
+  }
+
+  /* ============ HERO CAROUSEL ============ */
+  .hero-carousel {
+    position: relative;
+    height: min(76vh, 640px);
+    overflow: hidden;
+  }
+
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.7s ease;
+  }
+
+  .hero-slide.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .hero-slide .wrap {
+    position: relative;
+    z-index: 2;
+    max-width: 560px;
+  }
+
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 14px;
+  }
+
+  .hero-slide h2 {
+    font-size: clamp(2.1rem, 5vw, 3.2rem);
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .hero-slide p {
+    color: rgba(255,255,255,0.86);
+    font-size: 1.08rem;
+    max-width: 42ch;
+    margin: 0 0 30px;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    background: var(--white);
+    color: var(--ink);
+    padding: 14px 30px;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 0.98rem;
+  }
+
+  .hero-slide--cocina { background: linear-gradient(120deg, #7A3B12, #B4720F); }
+  .hero-slide--decoracion { background: linear-gradient(120deg, #163934, #21504A); }
+  .hero-slide--organizacion { background: linear-gradient(120deg, #4A3B2E, #8F5A0C); }
+  .hero-slide--ofertas { background: linear-gradient(120deg, #1F2937, #21504A); }
+
+  .hero-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    background: rgba(255,255,255,0.16);
+    border: none;
+    color: var(--white);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease;
+  }
+  .hero-arrow:hover { background: rgba(255,255,255,0.3); }
+  .hero-arrow.prev { left: 20px; }
+  .hero-arrow.next { right: 20px; }
+  .hero-arrow svg { width: 20px; height: 20px; }
+
+  .hero-dots {
+    position: absolute;
+    bottom: 26px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    gap: 9px;
+  }
+
+  .hero-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.45);
+    border: none;
+    padding: 0;
+  }
+
+  .hero-dot.active { background: var(--white); }
+
+  @media (max-width: 640px) {
+    .hero-carousel { height: 560px; }
+    .hero-slide .wrap { max-width: 100%; }
+  }
+
+  /* ============ INTRO ============ */
+  .intro {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .intro p {
+    max-width: 68ch;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.12rem;
+    color: var(--ink-soft);
+  }
+
+  /* ============ PRODUCTS ============ */
+  .products {
+    padding: 80px 0;
+  }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 36px;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .section-head h2 { font-size: clamp(1.7rem, 3.6vw, 2.3rem); }
+  .section-head p { color: var(--ink-soft); margin: 6px 0 0; }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .product-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .product-thumb {
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-thumb svg { width: 46px; height: 46px; color: rgba(255,255,255,0.85); }
+
+  .product-info { padding: 20px; }
+  .product-cat { font-size: 0.8rem; color: var(--amber-deep); font-weight: 500; margin-bottom: 6px; }
+  .product-name { font-family: 'Fraunces', serif; font-size: 1.08rem; margin-bottom: 6px; }
+  .product-price { font-weight: 600; color: var(--ink); margin-bottom: 16px; }
+
+  .whatsapp-buy {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--teal);
+    color: var(--white);
+    padding: 10px 18px;
+    border-radius: 3px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    width: 100%;
+    justify-content: center;
+    transition: background 0.15s ease;
+  }
+  .whatsapp-buy:hover { background: var(--teal-dark); }
+  .whatsapp-buy svg { width: 15px; height: 15px; }
+
+  .products-footer {
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .btn-outline {
+    display: inline-block;
+    border: 1px solid var(--ink);
+    padding: 13px 30px;
+    border-radius: 3px;
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+  .btn-outline:hover { background: var(--ink); color: var(--ivory); }
+
+  @media (max-width: 900px) {
+    .product-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .product-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ============ TESTIMONIALS ============ */
+  .testimonials {
+    background: var(--ivory-deep);
+    padding: 80px 0;
+  }
+
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .testimonial-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 26px;
+  }
+
+  .stars { color: var(--amber-deep); font-size: 0.95rem; margin-bottom: 12px; letter-spacing: 2px; }
+  .testimonial-card p { font-size: 0.98rem; color: var(--ink-soft); margin: 0 0 16px; }
+  .testimonial-name { font-weight: 600; font-size: 0.92rem; }
+
+  @media (max-width: 900px) {
+    .testimonial-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .testimonial-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ============ FOOTER ============ */
+  .site-footer {
+    background: #000000;
+    color: #F2F2F2;
+    padding: 70px 0 0;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr 1fr 1.3fr;
+    gap: 40px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid rgba(255,255,255,0.14);
+  }
+
+  .footer-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .footer-col h3 {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 18px;
+  }
+
+  .footer-col ul li { margin-bottom: 11px; }
+  .footer-col ul a {
+    font-size: 0.92rem;
+    color: #BFBFBF;
+  }
+  .footer-col ul a:hover { color: var(--white); }
+
+  .subscribe-col p {
+    font-size: 0.92rem;
+    color: #BFBFBF;
+    margin: 0 0 20px;
+    max-width: 32ch;
+  }
+
+  .subscribe-form {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+    padding-bottom: 10px;
+  }
+
+  .subscribe-form input {
+    flex: 1;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 0.92rem;
+    font-family: 'Work Sans', sans-serif;
+    padding: 4px 0;
+  }
+  .subscribe-form input::placeholder { color: #8A8A8A; }
+  .subscribe-form input:focus { outline: none; }
+
+  .subscribe-form button {
+    background: none;
+    border: none;
+    color: var(--white);
+    padding: 4px 0 4px 10px;
+    display: flex;
+    align-items: center;
+  }
+  .subscribe-form button svg { width: 18px; height: 18px; }
+
+  .footer-bottom {
+    padding: 26px 0 34px;
+  }
+  .footer-bottom p {
+    margin: 0;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #A6A6A6;
+    max-width: 70ch;
+    margin: 0 auto;
+  }
+  .footer-bottom a { color: #D8D8D8; }
+  .footer-bottom a:hover { color: var(--white); }
+
+  @media (max-width: 900px) {
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .footer-top { grid-template-columns: 1fr; }
+  }
+
+  /* ============ SOCIAL BUBBLE ============ */
+  .social-bubble {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 70;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .social-bubble .bubble-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 4px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  }
+
+  .social-bubble.open .bubble-links {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .social-bubble a,
+  .bubble-toggle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--teal);
+    color: var(--white);
+    box-shadow: 0 10px 24px rgba(22, 57, 52, 0.35);
+    border: none;
+  }
+
+  .social-bubble a svg,
+  .bubble-toggle svg { width: 22px; height: 22px; }
+
+  .bubble-toggle {
+    background: var(--ink);
+    transition: transform 0.18s ease;
+  }
+  .social-bubble.open .bubble-toggle { transform: rotate(45deg); }
 </style>
 </head>
 <body>
 
-  <header>
-    <div class="wrap">
-      <a class="mark" href="#top">Kikomerce</a>
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="#inicio">Kikomerce</a>
+
+      <nav class="main-nav" id="mainNav">
+        <div class="close-mobile-nav">
+          <button id="closeMobileNav" aria-label="Cerrar menú">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li class="has-submenu" id="productosItem">
+            <button class="nav-toggle" aria-expanded="false">
+              Productos
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="submenu">
+              <div class="submenu-col">
+                <h4>Para la cocina</h4>
+                <a href="#productos">Organizadores de cocina</a>
+                <a href="#productos">Utensilios y menaje</a>
+                <a href="#productos">Almacenamiento de alimentos</a>
+              </div>
+              <div class="submenu-col">
+                <h4>Para el hogar</h4>
+                <a href="#productos">Decoración</a>
+                <a href="#productos">Iluminación</a>
+                <a href="#productos">Baño y aseo</a>
+              </div>
+              <div class="submenu-col">
+                <h4>Explora más</h4>
+                <a href="#productos">Organización y closets</a>
+                <a href="#productos">Jardín y exterior</a>
+                <a href="#productos">Ofertas de la semana</a>
+              </div>
+            </div>
+          </li>
+          <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <button class="mobile-toggle" id="openMobileNav" aria-label="Abrir menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
     </div>
   </header>
 
-  <main id="top">
-    <div class="wrap">
-      <h1>Bienvenidos a <span>Kikomerce</span></h1>
+  <!-- ============ HERO CAROUSEL ============ -->
+  <section class="hero-carousel" id="heroCarousel">
+    <div class="hero-slide hero-slide--cocina active">
+      <div class="wrap">
+        <span class="hero-eyebrow">Nueva colección</span>
+        <h2>Tu cocina, más práctica</h2>
+        <p>Organizadores, utensilios y menaje pensados para el día a día en tu hogar.</p>
+        <a class="hero-cta" href="#productos">Ver productos</a>
+      </div>
+    </div>
+    <div class="hero-slide hero-slide--decoracion">
+      <div class="wrap">
+        <span class="hero-eyebrow">Renueva tus espacios</span>
+        <h2>Decoración con carácter</h2>
+        <p>Piezas para darle un toque distinto a cada rincón de tu casa.</p>
+        <a class="hero-cta" href="#productos">Explorar decoración</a>
+      </div>
+    </div>
+    <div class="hero-slide hero-slide--organizacion">
+      <div class="wrap">
+        <span class="hero-eyebrow">Orden que se nota</span>
+        <h2>Organización sin complicaciones</h2>
+        <p>Soluciones simples para closets, cajones y espacios pequeños.</p>
+        <a class="hero-cta" href="#productos">Ver soluciones</a>
+      </div>
+    </div>
+    <div class="hero-slide hero-slide--ofertas">
+      <div class="wrap">
+        <span class="hero-eyebrow">Por tiempo limitado</span>
+        <h2>Ofertas de esta semana</h2>
+        <p>Descuentos en artículos seleccionados para tu hogar.</p>
+        <a class="hero-cta" href="#productos">Ver ofertas</a>
+      </div>
+    </div>
 
-      <p class="slogan">
-        Tu tienda de confianza para todos los artículos de tu hogar. Somos una marca
-        operada legalmente por Yony Duvan Roa Rodríguez, comprometidos con ofrecer
+    <button class="hero-arrow prev" id="heroPrev" aria-label="Anterior">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+    <button class="hero-arrow next" id="heroNext" aria-label="Siguiente">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
+
+    <div class="hero-dots" id="heroDots"></div>
+  </section>
+
+  <!-- ============ INTRO ============ -->
+  <section class="intro" id="sobre-nosotros">
+    <div class="wrap">
+      <p>
+        Bienvenidos a Kikomerce, tu tienda de confianza para todos los artículos de tu hogar.
+        Somos una marca operada legalmente por Yony Duvan Roa Rodríguez, comprometidos con ofrecer
         la mejor experiencia de compra en línea en Colombia.
       </p>
+    </div>
+  </section>
 
-      <p class="legal">NIT: 1023920089</p>
+  <!-- ============ PRODUCTS ============ -->
+  <section class="products" id="productos">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Productos destacados</h2>
+          <p>Una selección de lo que más piden nuestros clientes.</p>
+        </div>
+      </div>
 
-      <div class="contact">
-        <a class="whatsapp-btn" href="https://wa.me/573212795272" target="_blank" rel="noopener">
-          Escríbenos por WhatsApp
-        </a>
+      <div class="product-grid">
 
-        <div class="contact-item">
-          <span class="contact-label">Teléfono</span>
-          <span class="contact-value">+57 321 2795272</span>
+        <div class="product-card">
+          <div class="product-thumb" style="background: linear-gradient(135deg, #7A3B12, #B4720F);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 10h16M6 10v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-9M9 10V7a3 3 0 0 1 6 0v3"/></svg>
+          </div>
+          <div class="product-info">
+            <div class="product-cat">Organización</div>
+            <div class="product-name">Set de contenedores herméticos x5</div>
+            <div class="product-price">$59.900</div>
+            <a class="whatsapp-buy" href="https://wa.me/573212795272?text=Hola%2C%20quiero%20comprar%3A%20Set%20de%20contenedores%20herm%C3%A9ticos%20x5" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8.9-.1.1-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5.1-.1.3-.3.4-.5.1-.1.2-.3.2-.4.1-.2 0-.4 0-.5s-.6-1.4-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2 0 1.3.9 2.5 1.1 2.7.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.4-.3Z"/></svg>
+              Comprar por WhatsApp
+            </a>
+          </div>
         </div>
 
-        <div class="contact-item">
-          <span class="contact-label">Correo</span>
-          <span class="contact-value">contacto@kikomerce.co</span>
+        <div class="product-card">
+          <div class="product-thumb" style="background: linear-gradient(135deg, #163934, #21504A);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 21V9l3-6 3 6v12M4 21h16M8 21v-6h8v6"/></svg>
+          </div>
+          <div class="product-info">
+            <div class="product-cat">Decoración</div>
+            <div class="product-name">Jarrón cerámico minimalista</div>
+            <div class="product-price">$74.900</div>
+            <a class="whatsapp-buy" href="https://wa.me/573212795272?text=Hola%2C%20quiero%20comprar%3A%20Jarr%C3%B3n%20cer%C3%A1mico%20minimalista" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8.9-.1.1-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5.1-.1.3-.3.4-.5.1-.1.2-.3.2-.4.1-.2 0-.4 0-.5s-.6-1.4-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2 0 1.3.9 2.5 1.1 2.7.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.4-.3Z"/></svg>
+              Comprar por WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-thumb" style="background: linear-gradient(135deg, #4A3B2E, #8F5A0C);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+          </div>
+          <div class="product-info">
+            <div class="product-cat">Organización</div>
+            <div class="product-name">Organizador de closet apilable</div>
+            <div class="product-price">$45.900</div>
+            <a class="whatsapp-buy" href="https://wa.me/573212795272?text=Hola%2C%20quiero%20comprar%3A%20Organizador%20de%20closet%20apilable" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8.9-.1.1-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5.1-.1.3-.3.4-.5.1-.1.2-.3.2-.4.1-.2 0-.4 0-.5s-.6-1.4-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2 0 1.3.9 2.5 1.1 2.7.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.4-.3Z"/></svg>
+              Comprar por WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-thumb" style="background: linear-gradient(135deg, #1F2937, #21504A);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.6.5 1 1.3 1 2.1V16h6v-.4c0-.8.4-1.6 1-2.1A6 6 0 0 0 12 3Z"/></svg>
+          </div>
+          <div class="product-info">
+            <div class="product-cat">Iluminación</div>
+            <div class="product-name">Lámpara LED táctil regulable</div>
+            <div class="product-price">$52.900</div>
+            <a class="whatsapp-buy" href="https://wa.me/573212795272?text=Hola%2C%20quiero%20comprar%3A%20L%C3%A1mpara%20LED%20t%C3%A1ctil%20regulable" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8.9-.1.1-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5.1-.1.3-.3.4-.5.1-.1.2-.3.2-.4.1-.2 0-.4 0-.5s-.6-1.4-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2 0 1.3.9 2.5 1.1 2.7.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.4-.3Z"/></svg>
+              Comprar por WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-thumb" style="background: linear-gradient(135deg, #7A3B12, #B4720F);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v4H4zM6 8v12h12V8"/></svg>
+          </div>
+          <div class="product-info">
+            <div class="product-cat">Cocina</div>
+            <div class="product-name">Organizador de especias giratorio</div>
+            <div class="product-price">$38.900</div>
+            <a class="whatsapp-buy" href="https://wa.me/573212795272?text=Hola%2C%20quiero%20comprar%3A%20Organizador%20de%20especias%20giratorio" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8.9-.1.1-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5.1-.1.3-.3.4-.5.1-.1.2-.3.2-.4.1-.2 0-.4 0-.5s-.6-1.4-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2 0 1.3.9 2.5 1.1 2.7.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.4-.3Z"/></svg>
+              Comprar por WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-thumb" style="background: linear-gradient(135deg, #163934, #21504A);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 10h18M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9M8 6l4-3 4 3"/></svg>
+          </div>
+          <div class="product-info">
+            <div class="product-cat">Baño</div>
+            <div class="product-name">Set de accesorios de baño en bambú</div>
+            <div class="product-price">$68.900</div>
+            <a class="whatsapp-buy" href="https://wa.me/573212795272?text=Hola%2C%20quiero%20comprar%3A%20Set%20de%20accesorios%20de%20ba%C3%B1o%20en%20bamb%C3%BA" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8.9-.1.1-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5.1-.1.3-.3.4-.5.1-.1.2-.3.2-.4.1-.2 0-.4 0-.5s-.6-1.4-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2 0 1.3.9 2.5 1.1 2.7.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.4-.3Z"/></svg>
+              Comprar por WhatsApp
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="products-footer">
+        <a class="btn-outline" href="#">Ver todos los productos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="testimonials">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Lo que dicen nuestros clientes</h2>
+        </div>
+      </div>
+
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>Llegó todo muy bien empacado y antes de lo esperado. La calidad superó lo que vi en las fotos.</p>
+          <div class="testimonial-name">Camila R.</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>Excelente atención por WhatsApp, resolvieron todas mis dudas antes de comprar. Repito seguro.</p>
+          <div class="testimonial-name">Andrés M.</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>Los organizadores de cocina son justo lo que necesitaba, se nota que son de buen material.</p>
+          <div class="testimonial-name">Lorena P.</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>El envío fue rápido y el producto llegó exactamente como lo mostraban. Muy recomendados.</p>
+          <div class="testimonial-name">Juan D.</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>Compré la lámpara LED y quedé encantada, se ve mejor en persona. Volveré a comprar.</p>
+          <div class="testimonial-name">Valentina S.</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>Buenos precios y atención personalizada. Se siente que es un negocio serio y de confianza.</p>
+          <div class="testimonial-name">Carlos E.</div>
         </div>
       </div>
     </div>
-  </main>
+  </section>
 
-  <footer>
-    <div class="wrap">
-      <p>© 2026 Kikomerce · Yony Duvan Roa Rodríguez · NIT 1023920089</p>
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer" id="contacto">
+    <div class="wrap footer-top">
+
+      <div class="footer-col logo-col">
+        <span class="footer-logo">Kikomerce</span>
+      </div>
+
+      <div class="footer-col">
+        <h3>Servicio al cliente</h3>
+        <ul>
+          <li><a href="/pages/terminos-del-servicio.html">Términos del servicio</a></li>
+          <li><a href="/pages/politicas-de-privacidad.html">Políticas de privacidad</a></li>
+          <li><a href="/pages/politicas-de-envios.html">Políticas de envíos</a></li>
+          <li><a href="/pages/politicas-de-reembolso.html">Políticas de reembolso</a></li>
+          <li><a href="/pages/politicas-de-promociones.html">Políticas de promociones</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Acerca de Kikomerce®</h3>
+        <ul>
+          <li><a href="/search">Buscar</a></li>
+          <li><a href="/pages/quienes-somos.html">¿Quiénes somos?</a></li>
+          <li><a href="/pages/preguntas-frecuentes.html">Preguntas frecuentes</a></li>
+          <li><a href="#contacto">Contáctanos</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col subscribe-col">
+        <h3>Suscríbete para conocer más</h3>
+        <p>Obtén ofertas únicas en la vida, entérate de nuevos lanzamientos y conoce nuevas tendencias de productos para el hogar.</p>
+        <form class="subscribe-form" onsubmit="return false;">
+          <input type="email" placeholder="Suscríbete a nuestra lista de correo" required>
+          <button type="submit" aria-label="Suscribir">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18v12H3zM3 6l9 7 9-7"/></svg>
+          </button>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="wrap footer-bottom">
+      <p>© 2026 Yony Duvan Roa® Todos los derechos reservados. ¡Escríbenos! a <a href="mailto:contacto@kikomerce.co">contacto@kikomerce.co</a> o a nuestro WhatsApp <a href="https://wa.me/573212795272" target="_blank" rel="noopener">+57 321 2795272</a>.</p>
     </div>
   </footer>
+
+  <!-- ============ SOCIAL BUBBLE ============ -->
+  <div class="social-bubble" id="socialBubble">
+    <div class="bubble-links">
+      <a href="#" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.2-1.5 1.6-1.5H16.7V3.7C16.4 3.7 15.4 3.6 14.3 3.6c-2.3 0-3.9 1.4-3.9 4V10H7.7v3.1h2.7V21h3.1Z"/></svg>
+      </a>
+      <a href="#" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="0.8" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="#" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.5 3h2.6c.2 1.6 1.3 2.9 2.9 3.2v2.6c-1.1 0-2.1-.3-3-.9v6.4a5.3 5.3 0 1 1-5.3-5.3c.3 0 .5 0 .8.1v2.7a2.6 2.6 0 1 0 1.8 2.5V3Z"/></svg>
+      </a>
+    </div>
+    <button class="bubble-toggle" id="bubbleToggle" aria-label="Redes sociales">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+    </button>
+  </div>
+
+  <script>
+    // ---- Hero carousel ----
+    (function () {
+      const slides = document.querySelectorAll('.hero-slide');
+      const dotsWrap = document.getElementById('heroDots');
+      let current = 0;
+      let timer;
+
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Ir a la diapositiva ' + (i + 1));
+        dot.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(dot);
+      });
+      const dots = dotsWrap.querySelectorAll('.hero-dot');
+
+      function goTo(index) {
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = (index + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+        resetTimer();
+      }
+
+      function resetTimer() {
+        clearInterval(timer);
+        timer = setInterval(() => goTo(current + 1), 6000);
+      }
+
+      document.getElementById('heroPrev').addEventListener('click', () => goTo(current - 1));
+      document.getElementById('heroNext').addEventListener('click', () => goTo(current + 1));
+      resetTimer();
+    })();
+
+    // ---- Productos dropdown ----
+    (function () {
+      const item = document.getElementById('productosItem');
+      const toggle = item.querySelector('.nav-toggle');
+
+      toggle.addEventListener('click', () => {
+        const isOpen = item.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', isOpen);
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!item.contains(e.target)) {
+          item.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          item.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+
+    // ---- Mobile nav ----
+    (function () {
+      const nav = document.getElementById('mainNav');
+      document.getElementById('openMobileNav').addEventListener('click', () => {
+        nav.classList.add('mobile-open');
+      });
+      document.getElementById('closeMobileNav').addEventListener('click', () => {
+        nav.classList.remove('mobile-open');
+      });
+    })();
+
+    // ---- Social bubble ----
+    (function () {
+      const bubble = document.getElementById('socialBubble');
+      document.getElementById('bubbleToggle').addEventListener('click', () => {
+        bubble.classList.toggle('open');
+      });
+      document.addEventListener('click', (e) => {
+        if (!bubble.contains(e.target)) bubble.classList.remove('open');
+      });
+    })();
+  </script>
 
 </body>
 </html>
