@@ -137,9 +137,20 @@ document.addEventListener('DOMContentLoaded', function () {
       const breadcrumbName = document.getElementById('breadcrumbProducto');
       if (breadcrumbName) breadcrumbName.textContent = producto.nombre;
 
+      const galeria = (producto.imagenes && producto.imagenes.length) ? producto.imagenes : (producto.imagen ? [producto.imagen] : []);
+
+      const detailThumb = galeria.length
+        ? `<div class="product-detail-thumb"><img id="mainProductImage" src="${galeria[0]}" alt="${producto.nombre}" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>`
+        : `<div class="product-detail-thumb" style="background: ${cat.gradiente || '#21504A'};">${cat.icono || ''}</div>`;
+
+      const galeriaThumbs = galeria.length > 1
+        ? `<div class="product-gallery-thumbs">${galeria.map((src, i) => `<button class="gallery-thumb-btn${i === 0 ? ' active' : ''}" data-src="${src}"><img src="${src}" alt="${producto.nombre} foto ${i + 1}"></button>`).join('')}</div>`
+        : '';
+
       detailWrap.innerHTML = `
-        <div class="product-detail-thumb" style="background: ${cat.gradiente || '#21504A'};">
-          ${cat.icono || ''}
+        <div>
+          ${detailThumb}
+          ${galeriaThumbs}
         </div>
         <div class="product-detail-info">
           <div class="product-cat">${producto.categoria}</div>
@@ -152,6 +163,16 @@ document.addEventListener('DOMContentLoaded', function () {
           </a>
         </div>
       `;
+
+      const thumbBtns = detailWrap.querySelectorAll('.gallery-thumb-btn');
+      const mainImg = document.getElementById('mainProductImage');
+      thumbBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          if (mainImg) mainImg.src = btn.dataset.src;
+          thumbBtns.forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+        });
+      });
     }
   }
 });
@@ -167,12 +188,13 @@ function formatCOP(valor) {
 function kikomerceProductCardHTML(p) {
   const cat = (window.CATEGORIAS && window.CATEGORIAS[p.categoria]) || {};
   const mensaje = encodeURIComponent('Hola, quiero comprar: ' + p.nombre);
+  const thumb = p.imagen
+    ? `<div class="product-thumb"><img src="${p.imagen}" alt="${p.nombre}" style="width:100%;height:100%;object-fit:cover;"></div>`
+    : `<div class="product-thumb" style="background: ${cat.gradiente || '#21504A'};">${cat.icono || ''}</div>`;
   return `
     <div class="product-card">
       <a class="product-thumb-link" href="/producto.html?id=${encodeURIComponent(p.id)}">
-        <div class="product-thumb" style="background: ${cat.gradiente || '#21504A'};">
-          ${cat.icono || ''}
-        </div>
+        ${thumb}
       </a>
       <div class="product-info">
         <div class="product-cat">${p.categoria}</div>
