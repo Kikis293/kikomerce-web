@@ -1,4 +1,6 @@
-// ============ Kikomerce — catálogo de productos ============
+// ============================================================
+// ============ KIKOMERCE — CATáLOGO DE PRODUCTOS ============
+// ============================================================
 // Para agregar un producto nuevo, copia un bloque del arreglo PRODUCTOS y cambia sus datos.
 // El campo "id" debe ser único y sin espacios (se usa en la URL: /producto.html?id=...).
 // El campo "categoria" debe coincidir exactamente con una de las claves de CATEGORIAS más abajo.
@@ -7,6 +9,9 @@
 // su ruta en el campo "imagen" (ej: "imagen": "/assets/images/rodillo-quita-pelusa.jpg").
 // Mientras el campo "imagen" esté vacío o no exista, se muestra un bloque de color con ícono.
 
+// ------------------------------------------------------------
+// CATEGORÍAS
+// ------------------------------------------------------------
 const CATEGORIAS = {
   "Hogar": {
     gradiente: "linear-gradient(135deg, #163934, #21504A)",
@@ -26,6 +31,9 @@ const CATEGORIAS = {
   }
 };
 
+// ------------------------------------------------------------
+// PRODUCTOS
+// ------------------------------------------------------------
 const PRODUCTOS = [
   {
     id: "rodillo-quita-pelusa",
