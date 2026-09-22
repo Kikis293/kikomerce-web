@@ -71,9 +71,9 @@ const PRODUCTOS = [
     categoria: "Hogar",
     nombre: "Secador de Ropa Portátil",
     precio: 94000,
-    imagen: "/assets/images/secador-ropa-portatil-1.png",
+    imagen: "/assets/images/secador-ropa-portatil-1.jpg",
     imagenes: [
-      "/assets/images/secador-ropa-portatil-1.png",
+      "/assets/images/secador-ropa-portatil-1.jpg",
       "/assets/images/secador-ropa-portatil-2.png",
       "/assets/images/secador-ropa-portatil-3.png"
     ],
