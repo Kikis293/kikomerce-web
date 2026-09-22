@@ -77,7 +77,6 @@ const PRODUCTOS = [
       "/assets/images/secador-ropa-portatil-2.png",
       "/assets/images/secador-ropa-portatil-3.png"
     ],
-    imagen: "",
     descripcion: "Secador de ropa portátil y retráctil, una forma práctica y eficiente de secar tus prendas sin depender del clima. Su diseño retráctil aprovecha cada centímetro y queda guardado cuando no lo necesitas. Se instala fácilmente con su sistema de gancho adhesivo en superficies firmes y limpias. Ideal para casas, apartamentos, viajes y espacios pequeños."
   },
   {
