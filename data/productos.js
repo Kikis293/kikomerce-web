@@ -1,6 +1,4 @@
-// ============================================================
-// ============ KIKOMERCE — CATáLOGO DE PRODUCTOS ============
-// ============================================================
+// ============ Kikomerce — catálogo de productos ============
 // Para agregar un producto nuevo, copia un bloque del arreglo PRODUCTOS y cambia sus datos.
 // El campo "id" debe ser único y sin espacios (se usa en la URL: /producto.html?id=...).
 // El campo "categoria" debe coincidir exactamente con una de las claves de CATEGORIAS más abajo.
@@ -9,9 +7,6 @@
 // su ruta en el campo "imagen" (ej: "imagen": "/assets/images/rodillo-quita-pelusa.jpg").
 // Mientras el campo "imagen" esté vacío o no exista, se muestra un bloque de color con ícono.
 
-// ------------------------------------------------------------
-// CATEGORÍAS
-// ------------------------------------------------------------
 const CATEGORIAS = {
   "Hogar": {
     gradiente: "linear-gradient(135deg, #163934, #21504A)",
@@ -31,9 +26,6 @@ const CATEGORIAS = {
   }
 };
 
-// ------------------------------------------------------------
-// PRODUCTOS
-// ------------------------------------------------------------
 const PRODUCTOS = [
   {
     id: "rodillo-quita-pelusa",
@@ -66,7 +58,12 @@ const PRODUCTOS = [
     categoria: "Herramientas",
     nombre: "Nivel Láser Multiuso con Cinta Métrica",
     precio: 79000,
-    imagen: "",
+    imagen: "/assets/images/nivel-laser-multiuso-1.jpg",
+    imagenes: [
+      "/assets/images/nivel-laser-multiuso-1.jpg",
+      "/assets/images/nivel-laser-multiuso-2.jpg",
+      "/assets/images/nivel-laser-multiuso-3.jpg"
+    ],
     descripcion: "Nivel láser multiuso con función horizontal, vertical o cruzada, ideal para colgar cuadros, instalar estantes y alinear cualquier proyecto en casa. Mide hasta 8 pies, nivela y alinea sin adivinar ni repetir el trabajo. Diseño compacto y resistente, pensado para hacerlo tú mismo con resultados de experto."
   },
   {
@@ -74,13 +71,19 @@ const PRODUCTOS = [
     categoria: "Hogar",
     nombre: "Secador de Ropa Portátil",
     precio: 94000,
+    imagen: "/assets/images/secador-ropa-portatil-1.png",
+    imagenes: [
+      "/assets/images/secador-ropa-portatil-1.png",
+      "/assets/images/secador-ropa-portatil-2.png",
+      "/assets/images/secador-ropa-portatil-3.png"
+    ],
     imagen: "",
     descripcion: "Secador de ropa portátil y retráctil, una forma práctica y eficiente de secar tus prendas sin depender del clima. Su diseño retráctil aprovecha cada centímetro y queda guardado cuando no lo necesitas. Se instala fácilmente con su sistema de gancho adhesivo en superficies firmes y limpias. Ideal para casas, apartamentos, viajes y espacios pequeños."
   },
   {
-    id: "bolso-baulito-coach-retro",
+    id: "bolso-baulito-retro",
     categoria: "Moda",
-    nombre: "Bolso Baulito Coach Retro Negro",
+    nombre: "Bolso Baulito Retro Negro",
     precio: 214000,
     imagen: "",
     descripcion: "Bolso baulito retro en negro absoluto, elaborado con telas sintéticas de alto valor y poliéster ultra resistente de alto gramaje, para un acabado estructurado y firme. Incluye caja y funda protectora de gama alta. Tamaño compacto (18 × 13 × 11 cm), ideal para tus esenciales sin cargar peso de más. Un tono atemporal que combina desde un look casual hasta una noche especial."
